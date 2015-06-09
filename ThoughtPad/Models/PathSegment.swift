@@ -35,6 +35,10 @@ class PathSegment {
             bezierPath.moveToPoint(originPoint)
         }
         
+        // If segment has origin, end, and all control points, render bezier curve
+        // from origin to end point with control points.  If segment has less than 
+        // origin, end, and all control points, render line from origin point to 
+        // points in segment.
         if let originPoint = originPoint,
             controlPoint1 = controlPoint1,
             controlPoint2 = controlPoint2,
