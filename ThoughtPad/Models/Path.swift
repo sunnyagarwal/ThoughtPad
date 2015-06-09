@@ -14,6 +14,7 @@ class Path {
     var segments: [PathSegment] = []
     var bezierPath: UIBezierPath {
         var bezierPath = UIBezierPath()
+        bezierPath.lineWidth = 2
         
         for segment in segments {
             if let originPoint = segment.originPoint {
@@ -29,8 +30,6 @@ class Path {
     // MARK: Init
     init(initialPoint: CGPoint) {
         appendPoint(initialPoint)
-        
-        bezierPath.lineWidth = 2
     }
     
     // MARK: Private Mutation Methods
