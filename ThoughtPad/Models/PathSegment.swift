@@ -31,13 +31,20 @@ class PathSegment {
     var bezierPath: UIBezierPath {
         var bezierPath = UIBezierPath()
         
+        if let originPoint = originPoint {
+            bezierPath.moveToPoint(originPoint)
+        }
+        
         if let originPoint = originPoint,
             controlPoint1 = controlPoint1,
             controlPoint2 = controlPoint2,
             controlPoint3 = controlPoint3,
             endPoint = endPoint {
-                bezierPath.moveToPoint(originPoint)
                 bezierPath.addCurveToPoint(endPoint, controlPoint1: controlPoint1, controlPoint2: controlPoint2)
+        } else {
+            for point in points {
+                bezierPath.addLineToPoint(point)
+            }
         }
         
         return bezierPath
